@@ -18,12 +18,12 @@ export class FileuploadComponent implements OnInit {
 
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
-    const reader = new FileReader();
+    const reader: FileReader = new FileReader();
     reader.readAsText(this.fileToUpload, 'UTF-8');
-    reader.onload = (evt) => {
+    reader.onload = (evt: Event) => {
         //console.log(evt.target.result.toString());
         //console.log(evt.target.result);
-        this.messajeEvent.emit(evt.target.result.toString());
+        this.messajeEvent.emit(reader.result.toString());
     };
 
     reader.onerror = (evt) => {
