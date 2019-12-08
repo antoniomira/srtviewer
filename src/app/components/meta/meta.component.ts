@@ -4,7 +4,7 @@ import { Meta } from '../../clases/subtitulo';
 @Component({
   selector: 'app-meta',
   templateUrl: './meta.component.html',
-  styleUrls: ['./meta.component.css']
+  styleUrls: ['./meta.component.scss']
 })
 export class MetaComponent implements OnInit {
 

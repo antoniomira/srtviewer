@@ -4,7 +4,7 @@ import { Style } from '../../clases/subtitulo';
 @Component({
   selector: 'app-styles',
   templateUrl: './styles.component.html',
-  styleUrls: ['./styles.component.css']
+  styleUrls: ['./styles.component.scss']
 })
 export class StylesComponent implements OnInit {
 
