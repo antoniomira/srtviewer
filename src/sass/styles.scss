@@ -1,0 +1,11 @@
+@import "src/sass/imports";
+
+body {
+    background-color: $firstColor;
+    @include margins(0px);
+    font-family: "Roboto";
+}
+
+.sticky {
+    //@include sticky;
+}

@@ -1,7 +1,7 @@
+<app-header class="header sticky"></app-header>
+<main class="main-content">
 <app-fileupload (messajeEvent)="recieveMessage($event)"></app-fileupload>
-<h2>Propiedades de los subtítulos</h2>
 <app-meta *ngIf="archivoCargado" [meta]="meta"></app-meta>
-<h2>Estilos de los subtítulos</h2>
 <app-styles *ngIf="archivoCargado" [styles]="styles"></app-styles>
-<h2>Subtitulos</h2>
 <app-sub *ngIf="archivoCargado" [subtitulos]="subs"></app-sub>
+</main>

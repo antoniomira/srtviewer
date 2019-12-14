@@ -10,6 +10,7 @@ export class FileuploadComponent implements OnInit {
   @Output() messajeEvent = new EventEmitter();
 
   fileToUpload: File;
+  fileName: string;
 
   constructor() { }
 
@@ -23,6 +24,7 @@ export class FileuploadComponent implements OnInit {
     reader.onload = (evt: Event) => {
         // console.log(evt.target.result.toString());
         // console.log(evt.target.result);
+        this.fileName = this.fileToUpload.name;
         this.messajeEvent.emit(reader.result.toString());
     };
 

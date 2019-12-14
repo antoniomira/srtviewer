@@ -1,6 +1,14 @@
 <div class="form-group">
-    <label for="file">Choose File</label>
-    <input type="file"
-           id="file"
-           (change)="handleFileInput($event.target.files)">
+    <div class="middleCol"> 
+        <h2>Elige un archivo</h2>   
+        <label for="file">
+            <div class="btn">
+                +
+            </div>
+            <input type="file"
+            id="file"
+            (change)="handleFileInput($event.target.files)">
+            <h3>{{fileName}}</h3>
+        </label>
+    </div>
 </div>

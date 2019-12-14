@@ -1,0 +1,97 @@
+@mixin margins($margins){
+    margin: $margins;
+}
+
+@mixin sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+@mixin noHighLight {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Opera and Firefox */
+}
+ 
+/*@mixin col($numberOfCols) {
+    $selectedCols: inSize($numberOfCols);
+    @if $selectedCols {
+        grid-column: 1 #{'/'} $selectedCols+1;
+    } @else {
+        grid-column: 1 #{'/'} $maxCols+1;
+    }
+    
+}
+
+@function inSize($cols, $maxOfCols: $maxCols) {
+    @return if($cols <= $maxOfCols, $cols, null);
+  }*/
+
+@mixin gridRows($minRow, $maxRow, $columns, $rowGap, $sizeRow){
+    display: grid;
+    grid-auto-rows: minmax($minRow, $maxRow);
+    grid-template-columns: repeat($columns, $sizeRow);
+    row-gap: $rowGap;
+}
+
+@mixin middleColumns($cols, $maxCells: $maxCols){
+    grid-column: inSize($cols, $maxCells);
+}
+
+@function inSize($cols, $maxCells: $maxCols) {
+    // Cuando tenemos que el espacio deseado es más grande que las columnas
+    @if($cols >= $maxCells) {
+        // Definir un comportamiento del grid
+        @return generateGridColumn($cols, $maxCells, false);
+    }
+
+    // Nuestra columna es par
+    @if(esPar($maxCells)){
+        @if(not esPar($cols)){
+            //@return green;  
+            $cols:$cols-1;  
+        }
+        // Tenemos que actuar deacuerdo a las columnas pares
+        //@else{
+        //    $cols:$cols-1;
+        //}
+    } 
+
+    // Nuestra columna es impar
+    @else {
+        @if(esPar($cols)){
+            $cols:$cols-1;
+        }
+        // Tenemos que actuar deacuerdo a las columnas impares
+        //@else{
+            //@return green;
+        //}
+    }
+
+    @return generateGridColumn($cols, $maxCells, true);
+}
+
+
+@function generateGridColumn($cols, $maxCells: $maxCols, $correcto){
+    $huecos: ($maxCells - $cols)/2;
+    $inicio: $huecos+1;
+    $final: ($maxCells) - $huecos+1;
+
+    @if($correcto)
+    {
+        @return $inicio#{'/'}$final;
+    }
+    @else{
+        @return 1#{'/'}$maxCols+1;
+    }
+}
+
+// Compruebo si la cantidad de columnas es par o impar
+@function esPar($columnas:$maxCols){
+    @return if($columnas % 2 == 0,true,false);
+}
