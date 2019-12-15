@@ -3,13 +3,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-fileupload',
   templateUrl: './fileupload.component.html',
-  styleUrls: ['./fileupload.component.css']
+  styleUrls: ['./fileupload.component.scss']
 })
 export class FileuploadComponent implements OnInit {
 
   @Output() messajeEvent = new EventEmitter();
 
   fileToUpload: File;
+  fileName: string;
 
   constructor() { }
 
@@ -21,14 +22,15 @@ export class FileuploadComponent implements OnInit {
     const reader: FileReader = new FileReader();
     reader.readAsText(this.fileToUpload, 'UTF-8');
     reader.onload = (evt: Event) => {
-        //console.log(evt.target.result.toString());
-        //console.log(evt.target.result);
+        // console.log(evt.target.result.toString());
+        // console.log(evt.target.result);
+        this.fileName = this.fileToUpload.name;
         this.messajeEvent.emit(reader.result.toString());
     };
 
     reader.onerror = (evt) => {
         console.log('Fallo al leer el archivo');
     };
-    //console.log(this.fileToUpload);
+    // console.log(this.fileToUpload);
   }
 }

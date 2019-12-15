@@ -6,6 +6,8 @@ import { MetaComponent } from './components/meta/meta.component';
 import { StylesComponent } from './components/styles/styles.component';
 import { SubComponent } from './components/sub/sub.component';
 import { FileuploadComponent } from './components/fileupload/fileupload.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { FileuploadComponent } from './components/fileupload/fileupload.componen
     MetaComponent,
     StylesComponent,
     SubComponent,
-    FileuploadComponent
+    FileuploadComponent,
+    HeaderComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule
